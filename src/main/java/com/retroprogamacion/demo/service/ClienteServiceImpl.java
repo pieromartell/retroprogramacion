@@ -35,14 +35,14 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Override
 	public Cliente update(Cliente c) {	
-		Cliente obj = repository.getById(c.getIdcliente());
+		Cliente obj = repository.getById(c.getDnicliente());
 		BeanUtils.copyProperties(c, obj);
 		return repository.save(c);
 	}
 
 	@Override
 	public Cliente delete(Cliente c) {
-		Cliente obj = repository.getById(c.getIdcliente());
+		Cliente obj = repository.getById(c.getDnicliente());
 		obj.setEstado(false);
 		return repository.save(obj);
 	}

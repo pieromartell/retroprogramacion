@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Agregar Amortozaciones</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+			<div th:replace="fragments/navbar :: navbar" role="navbar" ></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<form th:action="@{/amortizaciones/Guardar}" th:object="${amort}" method="POST">
+						<div class="form-group">
+							<label>IDAMORTIZACION</label>
+							<input type="text" class="form-control" th:field="*{idamortizacion}" >
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" th:field="*{prestamos.idprestamo}" >
+						</div>
+						<div class="form-group">
+							<label>Fecha</label>
+							<input type="date" class="form-control" th:field="*{fecha_Vencimiento}" >
+						</div>
+						<div class="form-group">
+							<label>IDAMORTIZACION</label>
+							<input type="number" class="form-control" th:field="*{mensualidad}" >
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" th:field="*{intereses}" >
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" th:field="*{capital}" >
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" th:field="*{saldo}" >
+						</div>
+						<div class="form-group">
+							<input type="hidden" class="form-control" th:field="*{estado}" >
+						</div>
+						<br>
+						<button class="btn btn-primary" type="submit">Pagar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<body>
+</body>
+</html>

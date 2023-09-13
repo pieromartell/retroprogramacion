@@ -18,9 +18,8 @@ import jakarta.persistence.Entity;
 @NoArgsConstructor
 public class Cliente {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idcliente")
-	int idcliente;
+	@Column(name="dnicliente")
+	int dnicliente;
 	
 	
 	@Column(name="nombres")
@@ -29,8 +28,6 @@ public class Cliente {
 	@Column(name="apellidos")
 	String apellidos;
 	
-	@Column(name="dni")
-	String dni;
 	
 	@Column(name="direccion")
 	String direccion;

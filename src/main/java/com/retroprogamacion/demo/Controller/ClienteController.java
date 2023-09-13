@@ -1,4 +1,4 @@
-package com.retroprogamacion.Controller;
+package com.retroprogamacion.demo.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +17,7 @@ import com.retroprogamacion.demo.entity.Cliente;
 import com.retroprogamacion.demo.service.IClienteService;
 
 import ch.qos.logback.core.net.server.Client;
-
+//Made By Piero
 
 
 @Controller
@@ -50,8 +50,19 @@ public class ClienteController {
 	
 	@PostMapping("/save")
 	public String save( Cliente c, Model model) {
-		service.add(c);
-		return "redirect:/listar";
+		
+		Optional<Cliente> validar = service.findById(c.getDnicliente()); 
+		System.out.println(validar);
+		
+		if(validar != null){
+			c.setEstado(true);
+			service.add(c);
+			return "redirect:/listar";
+		}else {
+			System.out.println("Error");
+			return "cliente/formulario";
+		}
+		
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -68,8 +79,17 @@ public class ClienteController {
 		return "redirect:/listar";
 	}
 	
-	@PostMapping("/Eliminar/{id}")
+	@GetMapping("/Eliminar/{id}")
 	public String delete( Model model, @PathVariable int id) {
+		Optional<Cliente> cliente = service.findById(id);
+		model.addAttribute("cliente", cliente);
+		return "cliente/Eliminar";
+	}
+	
+	@PostMapping("/delete")
+	public String deleteUser( Cliente c, Model model) {
+		c.setEstado(false);
+		service.delete(c);
 		return "redirect:/listar";
 	}
 	

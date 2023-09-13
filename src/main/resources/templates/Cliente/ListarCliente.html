@@ -8,7 +8,7 @@
 </head>
 <body>
 	
-	
+	<div th:replace="fragments/navbar :: navbar" role="navbar" ></div>
 	
 	<div class="container">
 		<div class="col-lg-12">
@@ -26,16 +26,16 @@
 				</thead>
 				<tbody>
 					<tr th:each="cliente:${cliente}">
-						<td th:text = "${cliente.idcliente}"></td>
+						<td th:text = "${cliente.dnicliente}"></td>
 						<td th:text="${cliente.nombres}"></td>
 						<td th:text="${cliente.apellidos}"></td>
 						<td th:text="${cliente.telefono}"></td>
-						<td th:text="${cliente.estado}"></td>
+						<td th:text="${cliente.estado} ? 'Activo' : 'Inactivo'"></td>
 						<td>
-							<a th:href="@{/editar/}+${cliente.idcliente}" class ="btn btn-primary"> Editar</a>
+							<a th:href="@{/editar/}+${cliente.dnicliente}" class ="btn btn-primary"> Editar</a>
 						</td>
 						<td>
-							<a th:href="@{/Eliminar/}+${cliente.idcliente}" class="btn btn-danger">Eliminar</a>
+							<a th:href="@{/Eliminar/}+${cliente.dnicliente}" class="btn btn-danger">Eliminar</a>
 						</td>
 					</tr>
 				

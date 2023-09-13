@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Lista de Amortizaciones</title>
+</head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<body>
+<div th:replace="fragments/navbar :: navbar" role="navbar" ></div>
+
+	<div class="container">
+		<a>Pagar Amortizacion</a>
+		<table class="table table-bordered">
+			<thead>
+			<tr>
+				<th>idAmortizacion</th>
+				<th>Prestamo</th>
+				<th>Cliente</th>
+				<th>Fecha_Vencimiento</th>
+				<th>Interes</th>
+				<th>Capital</th>
+				<th>Mensualidad</th>
+				<th>Saldo</th>
+				<th>Estado</th>
+			</tr>
+			</thead>		
+			<tbody>
+				<tr th:each="amort:${amort}">
+					<td th:text="${amort.idamortizacion}"></td>
+					<td th:text="${amort.prestamos.idprestamo}"></td>
+					<td th:text="${amort.prestamos.cliente.nombres}"></td>
+					<td th:text="${amort.fecha_Vencimiento}"></td>	
+					<td th:text="${amort.intereses}"></td>
+					<td th:text="${amort.capital}"></td>		
+					<td th:text="${amort.mensualidad}"></td>
+					<td th:text="${amort.saldo}"></td>
+					<td th:text="${amort.estado}"></td>
+					<td>
+						<a class="btn btn-primary" th:href="@{/amortizaciones/Agregar/}+${amort.idamortizacion}">Pagar Cuota</a>
+					</td>
+				</tr>
+			</tbody>
+		
+		</table>
+	</div>
+
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
