@@ -34,7 +34,7 @@
 					<td th:text="${amort.capital}"></td>		
 					<td th:text="${amort.mensualidad}"></td>
 					<td th:text="${amort.saldo}"></td>
-					<td th:text="${amort.estado}"></td>
+					<td th:text="${amort.estado} ? 'Pendiente' : 'Pagado' " ></td>
 					<td>
 						<a class="btn btn-primary" th:href="@{/amortizaciones/Agregar/}+${amort.idamortizacion}">Pagar Cuota</a>
 					</td>

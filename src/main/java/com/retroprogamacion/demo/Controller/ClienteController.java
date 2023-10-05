@@ -31,7 +31,7 @@ public class ClienteController {
 	
 	@GetMapping("/Index")
 	public String mostrarIndex() {
-		return "Index";
+		return "index";
 	}
 	
 	
